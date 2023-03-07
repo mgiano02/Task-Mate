@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your project</title>
+    <title>My Tasks</title>
 </head>
 <body>
     <header>
@@ -23,35 +23,30 @@
     </header>
     <main>
         <div>
-            <h1>{{project_item.name}}</h1>
-            <p>{{project_item.description}}</p>
-            <h2>Tasks</h2>
-            <p><a href="{% url "create_task" %}">Create a new task</a></p>
-            {% if project_item.tasks.all != 0 %}
+            <h1>My Tasks</h1>
+            {% if True %}
                 <table>
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Assignee</th>
-                            <th>Start date</th>
-                            <th>Due date</th>
+                            <th>Start Date</th>
+                            <th>Due Date</th>
                             <th>Is completed</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for project in project_item.tasks.all %}
+                        {% for task_item in list.all %}
                             <tr>
-                                <td>{{project.name}}</td>
-                                <td>{{project.assignee}}</td>
-                                <td>{{project.start_date}}</td>
-                                <td>{{project.due_date}}</td>
-                                <td>{{project.is_completed|yesno}}</td>
+                                <td>{{task_item.name}}</td>
+                                <td>{{task_item.start_date}}</td>
+                                <td>{{task_item.due_date}}</td>
+                                <td>{{task_item.is_completed|yesno}}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             {% else %}
-                <p>This project has no tasks</p>
+                <p>You have no tasks</p>
             {% endif %}
         </div>
     </main>
